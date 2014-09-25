@@ -1,6 +1,7 @@
 'use strict';
-var app = function(){
-  console.log('APP IS IN THE HOUSE!');
-};
 
-module.exports = app();
+var React = require('react');
+
+var APP = require('./components/app.jsx')
+
+module.exports = React.renderComponent(<APP />, document.body);
