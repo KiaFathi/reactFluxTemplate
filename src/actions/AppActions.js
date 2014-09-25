@@ -8,6 +8,12 @@ var AppActions = {
       actionType: AppConstants.EXAMPLE_CONSTANT,
       text: text + ' to Actions'
     });
+  },
+  updateEntry: function(key){
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.UPDATE_ENTRY,
+      key: key
+    });
   }
 };
 

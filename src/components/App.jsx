@@ -2,9 +2,13 @@
 
 var React = require('react');
 
+//Flux Architecture Components
 var AppStore = require('../stores/AppStore');
 var AppActions = require('../actions/AppActions');
 
+
+//React Components
+var TodoList = require('./TodoList.jsx');
 
 function getAppState(){
   return AppStore.getData()
@@ -23,12 +27,18 @@ var APP = React.createClass({
     AppStore.removeChangeListener(this._onChange);
   },
 
-  handleClick: function(){
-    AppActions.exampleAction('Data from View');
+  handleClick: function(key){
+    AppActions.updateEntry(key);
   },
   render: function(){
+    var _this = this;
+    var TodoLists = _this.state.todos.map(function(item, index){
+      return <TodoList key={index} handleClick={_this.handleClick} text={item.text}/>
+    });
     return (
-      <button onClick={this.handleClick}>{this.state.message}</button>
+      <div>
+        {TodoLists}
+      </div>
       );
   },
 
