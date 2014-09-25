@@ -15,6 +15,10 @@ var APP = React.createClass({
     return getAppState();
   },
 
+  _onChange: function(){
+    this.setState(getAppState());
+  },
+
   componentDidMount: function(){
     AppStore.addChangeListener(this._onChange);
   },
@@ -26,14 +30,11 @@ var APP = React.createClass({
   handleClick: function(){
     AppActions.exampleAction('Data from View');
   },
+  
   render: function(){
     return (
       <button onClick={this.handleClick}>{this.state.message}</button>
       );
-  },
-
-  _onChange: function(){
-    this.setState(getAppState());
   }
 })
 
