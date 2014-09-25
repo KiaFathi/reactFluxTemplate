@@ -1,8 +1,9 @@
 var React = require('react');
+var AppActions = require('../actions/AppActions');
 
 var TodoList = React.createClass({
   handleClick: function(){
-    this.props.handleClick(this.props.key);
+    AppActions.deleteEntry(this.props.key);
   },
   render: function(){
     return (

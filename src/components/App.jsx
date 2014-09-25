@@ -20,6 +20,10 @@ var APP = React.createClass({
     return getAppState();
   },
 
+  _onChange: function(){
+    this.setState(getAppState());
+  },
+
   componentDidMount: function(){
     AppStore.addChangeListener(this._onChange);
   },
@@ -28,30 +32,20 @@ var APP = React.createClass({
     AppStore.removeChangeListener(this._onChange);
   },
 
-  deleteEntry: function(key){
-    AppActions.deleteEntry(key);
-  },
-
-  addEntry: function(text){
-    AppActions.addEntry(text);
-  },
-
+  
   render: function(){
     var _this = this;
     var TodoLists = _this.state.todos.map(function(item, index){
-      return <TodoList key={index} handleClick={_this.deleteEntry} text={item.text}/>
+      return <TodoList key={index} text={item.text}/>
     });
     return (
       <div>
-        <NewTodo handleClick={_this.addEntry}/>
+        <NewTodo/>
         {TodoLists}
       </div>
       );
-  },
-
-  _onChange: function(){
-    this.setState(getAppState());
   }
+
 })
 
 module.exports = APP;

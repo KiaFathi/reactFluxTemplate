@@ -1,5 +1,6 @@
 'use strict';
 var React = require('react');
+var AppActions = require('../actions/AppActions');
 
 var NewTodo = React.createClass({
   getInitialState: function(){
@@ -13,8 +14,7 @@ var NewTodo = React.createClass({
     });
   },
   handleClick: function(){
-    console.log(this.state.value);
-    this.props.handleClick(this.state.value);
+    AppActions.addEntry(this.state.value);
     this.setState({value : ''});
   },
   render: function(){
