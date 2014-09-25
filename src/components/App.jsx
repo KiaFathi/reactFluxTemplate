@@ -9,6 +9,7 @@ var AppActions = require('../actions/AppActions');
 
 //React Components
 var TodoList = require('./TodoList.jsx');
+var NewTodo = require('./NewTodo.jsx');
 
 function getAppState(){
   return AppStore.getData()
@@ -27,16 +28,22 @@ var APP = React.createClass({
     AppStore.removeChangeListener(this._onChange);
   },
 
-  handleClick: function(key){
-    AppActions.updateEntry(key);
+  deleteEntry: function(key){
+    AppActions.deleteEntry(key);
   },
+
+  addEntry: function(text){
+    AppActions.addEntry(text);
+  },
+
   render: function(){
     var _this = this;
     var TodoLists = _this.state.todos.map(function(item, index){
-      return <TodoList key={index} handleClick={_this.handleClick} text={item.text}/>
+      return <TodoList key={index} handleClick={_this.deleteEntry} text={item.text}/>
     });
     return (
       <div>
+        <NewTodo handleClick={_this.addEntry}/>
         {TodoLists}
       </div>
       );

@@ -6,7 +6,7 @@ var TodoList = React.createClass({
   },
   render: function(){
     return (
-      <button onClick={this.handleClick}>{this.props.text}</button>
+        <p><span>{this.props.text}<button onClick={this.handleClick}>X</button></span></p>
       );
   }
 });
