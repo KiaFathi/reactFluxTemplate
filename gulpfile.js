@@ -9,7 +9,7 @@ var connect = require('gulp-connect');
 
 var paths = {
     app: ['./src/app.jsx'],
-    js: ['./src/**/*.jsx'],
+    js: ['./src/**/*.*'],
 };
 
 gulp.task('browserify', function() {

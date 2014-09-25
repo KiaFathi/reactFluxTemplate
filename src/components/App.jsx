@@ -2,11 +2,38 @@
 
 var React = require('react');
 
+var AppStore = require('../stores/AppStore');
+var AppActions = require('../actions/AppActions');
+
+
+function getAppState(){
+  return AppStore.getData()
+};
+
 var APP = React.createClass({
+  getInitialState: function(){
+    return getAppState();
+  },
+
+  componentDidMount: function(){
+    AppStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function(){
+    AppStore.removeChangeListener(this._onChange);
+  },
+
+  handleClick: function(){
+    AppActions.exampleAction('Data from View');
+  },
   render: function(){
     return (
-      <p>THIS IS THE REACT or is it? IT IS! is it though?!</p>
+      <button onClick={this.handleClick}>{this.state.message}</button>
       );
+  },
+
+  _onChange: function(){
+    this.setState(getAppState());
   }
 })
 
