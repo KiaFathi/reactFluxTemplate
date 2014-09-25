@@ -1,0 +1,26 @@
+{
+  "name": "reactFluxTemplate",
+  "version": "0.0.0",
+  "description": "A template for react/flux applications with gulp and browserify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KiaFathi/reactFluxTemplate.git"
+  },
+  "author": "Kia Fathi <kiafathi@me.com> (http://kiafathi.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KiaFathi/reactFluxTemplate/issues"
+  },
+  "homepage": "https://github.com/KiaFathi/reactFluxTemplate",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "react": "^0.11.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.8"
+  }
+}
