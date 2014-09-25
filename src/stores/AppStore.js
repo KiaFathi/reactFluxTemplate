@@ -28,8 +28,6 @@ var AppStore = merge(EventEmitter.prototype, {
   removeChangeListener: function(callback){
     this.removeListener(CHANGE_EVENT, callback);
   }
-
-
 });
 
 AppDispatcher.register(function(payload){
