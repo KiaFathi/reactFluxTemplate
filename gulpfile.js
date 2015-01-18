@@ -14,12 +14,17 @@ var paths = {
 
 gulp.task('browserify', function() {
     // Browserify/bundle the JS.
-    browserify(paths.app)
-        .transform(reactify)
-        .bundle()
-        .pipe(source('bundle.js'))
-        .pipe(gulp.dest('./build/'))
-        .pipe(connect.reload());
+    browserify({
++        entries: paths.app,
++        extensions: ['.jsx'],
++        debug: true,
++        fullPaths: true
+    })
+    .transform(reactify)
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest('./build/'))
+    .pipe(connect.reload());
 });
 
 gulp.task('connect', function(){
